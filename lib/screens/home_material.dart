@@ -22,8 +22,23 @@ class _HomeMaterialState extends State<HomeMaterial> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          TextFormField(),
-                          TextFormField(),
+                          TextFormField(
+                            decoration:
+                                InputDecoration(labelText: 'First Name'),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your first name';
+                              }
+                            },
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(labelText: 'Last Name'),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your first name';
+                              }
+                            },
+                          ),
                           TextFormField(),
                           Container(
                               padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
@@ -33,6 +48,9 @@ class _HomeMaterialState extends State<HomeMaterial> {
                               value: _user.newsletter,
                               onChanged: (bool val) =>
                                   setState(() => _user.newsletter = val)),
+                          Container(
+                              padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                              child: Text('Interests')),
                           CheckboxListTile(
                               title: const Text('Cooking'),
                               value: _user.passions[User.PassionCooking],
