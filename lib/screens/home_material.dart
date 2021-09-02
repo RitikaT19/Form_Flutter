@@ -26,8 +26,34 @@ class _HomeMaterialState extends State<HomeMaterial> {
                           TextFormField(),
                           TextFormField(),
                           Container(
-                            padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
-                            child: Text('Subscribe'))
+                              padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                              child: Text('Subscribe')),
+                          SwitchListTile(
+                              title: const Text('Monthly Newsletter'),
+                              value: _user.newsletter,
+                              onChanged: (bool val) =>
+                                  setState(() => _user.newsletter = val)),
+                          CheckboxListTile(
+                              title: const Text('Cooking'),
+                              value: _user.passions[User.PassionCooking],
+                              onChanged: (val) {
+                                setState(() =>
+                                    _user.passions[User.PassionCooking] = val!);
+                              }),
+                          CheckboxListTile(
+                              title: const Text('Hiking'),
+                              value: _user.passions[User.PassionHiking],
+                              onChanged: (val) {
+                                setState(() =>
+                                    _user.passions[User.PassionHiking] = val!);
+                              }),
+                          CheckboxListTile(
+                              title: const Text('Traveling'),
+                              value: _user.passions[User.PassionTraveling],
+                              onChanged: (val) {
+                                setState(() => _user
+                                    .passions[User.PassionTraveling] = val!);
+                              }),
                         ])))));
   }
 }
