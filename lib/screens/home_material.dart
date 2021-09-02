@@ -35,11 +35,10 @@ class _HomeMaterialState extends State<HomeMaterial> {
                             decoration: InputDecoration(labelText: 'Last Name'),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter your first name';
+                                return 'Please enter your last name';
                               }
                             },
                           ),
-                          TextFormField(),
                           Container(
                               padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
                               child: Text('Subscribe')),
@@ -72,6 +71,24 @@ class _HomeMaterialState extends State<HomeMaterial> {
                                 setState(() => _user
                                     .passions[User.PassionTraveling] = val!);
                               }),
+                          Container(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 16.0, horizontal: 16.0),
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    final form = _formKey.currentState;
+                                    if (form!.validate()) {
+                                      form.save();
+                                      _user.save();
+                                      _showDialog(context);
+                                    }
+                                  },
+                                  child: Text('Save'))),
                         ])))));
   }
+}
+
+// ignore: camel_case_types
+class _showDialog {
+  _showDialog(BuildContext context);
 }
